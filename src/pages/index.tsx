@@ -1,19 +1,16 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { trpc } from "../utils/trpc";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { trpc } from '../utils/trpc';
 
 const Home: NextPage = () => {
-  const { data, isLoading } = trpc.useQuery([
-    "image.get-images",
-  ]);
+  const { data, isLoading } = trpc.useQuery(['image.get-images']);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if(data) {
+  if (data) {
     console.log(data);
-    
   }
 
   return (
@@ -42,11 +39,7 @@ const Home: NextPage = () => {
               </a>
             </li>
             <li>
-              <a
-                href="https://typescriptlang.org"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://typescriptlang.org" target="_blank" rel="noreferrer">
                 TypeScript
               </a>
             </li>

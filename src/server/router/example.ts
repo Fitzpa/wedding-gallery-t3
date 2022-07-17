@@ -1,25 +1,24 @@
-import { createRouter } from "./context";
-import { z } from "zod";
-import { createImageSchema } from "../../schema/image.schema";
+import { createRouter } from './context';
+import { z } from 'zod';
+import { createImageSchema } from '../../schema/image.schema';
 
 export const imageRouter = createRouter()
-  .query("get-images", {
+  .query('get-images', {
     async resolve({ ctx }) {
       const images = await ctx.prisma.image.findMany();
 
       return images;
     },
-  }).mutation("create-image", {
+  })
+  .mutation('create-image', {
     input: createImageSchema,
     async resolve({ ctx, input }) {
-      const image = await ctx.prisma.image.create({ data: { ...input, likes: 0 },
-      })
+      const image = await ctx.prisma.image.create({ data: { ...input, likes: 0 } });
 
-      return image
+      return image;
     },
-  }
-  );
-  // import { createRouter } from "./context";
+  });
+// import { createRouter } from "./context";
 // import { z } from "zod";
 
 // export const exampleRouter = createRouter()
