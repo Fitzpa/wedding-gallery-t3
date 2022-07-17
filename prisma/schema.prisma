@@ -3,21 +3,19 @@
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider = "postgres"
-    // url      = "file:./db.sqlite"
-    url      = env("DATABASE_URL")
-}
-
-model Example {
-    id String @id @default(cuid())
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_URL")
+  referentialIntegrity = "prisma"
 }
 
 model Image {
     id String @id @default(cuid())
-    src String @unique
+    src String
     likes Int
     orientation String @default("Landscape")
 }
