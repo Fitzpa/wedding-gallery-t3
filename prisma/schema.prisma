@@ -19,4 +19,5 @@ model Image {
     id String @id @default(cuid())
     src String @unique
     likes Int
+    orientation String @default("Landscape")
 }

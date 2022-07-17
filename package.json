@@ -36,6 +36,8 @@
     "eslint": "8.18.0",
     "eslint-config-mantine": "2.0.0",
     "eslint-config-next": "12.1.6",
+    "exif-parser": "0.1.12",
+    "exifreader": "^4.5.0",
     "prettier": "2.7.1",
     "prisma": "^4.0.0",
     "ts-node": "^10.9.1",

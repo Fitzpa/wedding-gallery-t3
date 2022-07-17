@@ -12,6 +12,7 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core
 import { url } from '../constants';
 import { useState } from 'react';
 import Head from 'next/head';
+import { GlobalStyles } from '../components/Global';
 
 const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
   const { Component, pageProps } = props;
@@ -33,7 +34,8 @@ const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
       </Head>
-      <MantineProvider theme={{ fontFamily: 'Maginia', colorScheme }} withGlobalStyles withNormalizeCSS>
+      <MantineProvider theme={{ fontFamily: 'Maginia', headings: {fontFamily: "Maginia", fontSize: ["4.75rem","4.75rem","4.75rem","4.75rem","4.75rem","4.75rem"]}, colorScheme }} withGlobalStyles withNormalizeCSS>
+        <GlobalStyles />
         <Component {...pageProps} />
       </MantineProvider>
     </>

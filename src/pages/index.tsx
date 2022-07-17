@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { trpc } from '../utils/trpc';
 import ImageGrid from '../components/ImageGrid';
 import Hero from '../components/Hero';
-import { Container } from '@mantine/core';
+import { Container, Image, Box } from '@mantine/core';
 
 const Home: NextPage = () => {
   const { data, isLoading } = trpc.useQuery(['image.get-images']);
@@ -17,9 +17,13 @@ const Home: NextPage = () => {
   }
 
   return (
-    <Container size={"xl"}>
-      <Hero />
-      <ImageGrid />
+    <Container size={"xl"} >
+      <Image style={{ opacity: "0.5", width: "100vw", position: "fixed", bottom: "0", left: "0", zIndex: "1" }} width="100%" src={"/waves-bg.svg"} />
+
+      <Box style={{ position: "relative", zIndex: "2" }}>
+        <Hero />
+        <ImageGrid />
+      </Box>
     </Container>
   );
 };

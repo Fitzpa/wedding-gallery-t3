@@ -9,8 +9,16 @@ export const imageRouter = createRouter()
   .query('get-images', {
     async resolve({ ctx }) {
       const images = await ctx.prisma.image.findMany();
-
+      
       return images;
+    },
+  })
+  .query('get-images-by-orientation', {
+    async resolve({ ctx }) {
+      const images = await ctx.prisma.image.findMany();
+      const landscapes = await ctx.prisma.image.findMany({ where: { orientation: 'landscape' } });
+      const portraits = await ctx.prisma.image.findMany({ where: { orientation: 'portrait' } });
+      return { images, landscapes, portraits };
     },
   })
   .mutation('create-image', {

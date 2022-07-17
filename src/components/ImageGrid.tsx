@@ -1,29 +1,60 @@
-import { Container, Grid, SimpleGrid, Skeleton, useMantineTheme } from '@mantine/core';
-
-const PRIMARY_COL_HEIGHT = 300;
+import { Container, Grid } from '@mantine/core';
+import { trpc } from '../utils/trpc';
+import ImageModal from './ImageModal';
 
 function ImageGrid() {
-  const theme = useMantineTheme();
-  const SECONDARY_COL_HEIGHT = PRIMARY_COL_HEIGHT / 2 - theme.spacing.md / 2;
+  const { data, isLoading } = trpc.useQuery(['image.get-images-by-orientation']);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (data) {
+    console.log(data);
+  }
+
+  let landscapeCount = 0;
+  let portraitCount = 0;
+  const orderedImages = data?.images.map((image, index) => {
+    if (index % 4 === 0) {
+      landscapeCount++;
+      return {
+        ...data?.landscapes[landscapeCount - 1],
+        src: `/images/${data?.landscapes[landscapeCount - 1]?.src}`,
+      };
+    } else {
+      portraitCount++;
+      if (data?.portraits[portraitCount - 1]) {
+        return {
+          ...data?.portraits[portraitCount - 1],
+          src: `/images/${data?.portraits[portraitCount - 1]?.src}`,
+        };
+      }
+    }
+  });
+  console.log('🚀 ~ file: ImageGrid.tsx ~ line 37 ~ ImageGrid ~ orderedImages', orderedImages);
 
   return (
-    <Container my="md">
-      <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-        <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate={false} />
-        <Grid gutter="md">
-          <Grid.Col>
-            <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
-          </Grid.Col>
-        </Grid>
-      </SimpleGrid>
+    <Container fluid className="container">
+      <Grid>
+        {orderedImages?.map((image, index) => {
+          if (image?.orientation === 'landscape') {
+            return (
+              <Grid.Col key={image?.id} span={12}>
+                <ImageModal imageScr={`${image?.src}`} />
+              </Grid.Col>
+            );
+          } else {
+            return (
+              <Grid.Col key={image?.id} span={4}>
+                <ImageModal imageScr={`${image?.src}`} />
+              </Grid.Col>
+            );
+          }
+        })}
+      </Grid>
     </Container>
   );
 }
 
-export default ImageGrid
+export default ImageGrid;

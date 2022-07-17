@@ -2,6 +2,7 @@ import z from 'zod';
 
 export const createImageSchema = z.object({
   src: z.string(),
+  orientation: z.string(),
 });
 
 export type CreateImageInput = z.TypeOf<typeof createImageSchema>;
