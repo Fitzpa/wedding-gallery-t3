@@ -853,12 +853,8 @@ const jsonData = [{
   "orientation": "portrait"
 }]
 
-const doBackfill = async () => {
-  // console.log(jsonData)
-
-  const data = await prisma.image.createMany({data: jsonData});
-  
-  console.log('data', JSON.stringify(data, null, 2));
+const doBackfill = () => {
+  prisma.image.createMany({data: jsonData});
 }
 
 doBackfill();
