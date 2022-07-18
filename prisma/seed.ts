@@ -1,7 +1,22 @@
 // import prisma from '../src/server/db/client';
 // import jsonData from '../public/data/result.json';
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client')
+
+declare global {
+  var prisma: typeof PrismaClient | undefined;
+}
+
+const prisma =
+  global.prisma ||
+  new PrismaClient({
+    log: ['query'],
+  });
+
+if (process.env.NODE_ENV !== 'production') {
+  global.prisma = prisma;
+}
+
+export default prisma
 
 const jsonData = [{
   "id": "cl5onycif0001g7w1tnac34pc",
