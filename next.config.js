@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: "https://wedding-gallery-t3-bhc448k22-fitzpa.vercel.app/api/:path*",
+        source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
