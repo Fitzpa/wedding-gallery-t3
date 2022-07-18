@@ -9,7 +9,11 @@ const Home: NextPage = () => {
   const { data, isLoading } = trpc.useQuery(['image.get-images']);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Container size={"xl"} style={{ minHeight: '100vh' }} >
+        <div>Loading...</div>
+      </Container>
+    );
   }
 
   // if (data) {
@@ -17,7 +21,7 @@ const Home: NextPage = () => {
   // }
 
   return (
-    <Container size={"xl"} >
+    <Container size={"xl"} style={{ minHeight: '100vh' }} >
       <Image style={{ opacity: "0.5", width: "100vw", position: "fixed", bottom: "0", left: "0", zIndex: "1" }} width="100%" src={"/waves-bg.svg"} />
 
       <Box style={{ position: "relative", zIndex: "2" }}>
