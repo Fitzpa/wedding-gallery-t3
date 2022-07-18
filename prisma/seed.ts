@@ -854,14 +854,17 @@ const jsonData = [{
 }]
 
 const load = async () => {
-  try {
-   await prisma.image.createMany({data: jsonData});
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  } finally {
-    await prisma.$disconnect();
-  }
+
+   const res = await prisma.image.createMany({data: jsonData});
+   console.log("🚀 ~ file: seed.ts ~ line 859 ~ load ~ res", res)
+
 };
 
-load();
+load()
+.catch((e) => {
+  console.error(e)
+  process.exit(1)
+})
+.finally(async () => {
+  await prisma.$disconnect()
+})
