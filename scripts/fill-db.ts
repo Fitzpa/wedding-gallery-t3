@@ -7,12 +7,12 @@ const doBackfill = async () => {
     src: image,
     likes: 0,
   }));
-  console.log(formattedImages);
+  // console.log(formattedImages);
   const creation = await prisma.image.createMany({
     data: formattedImages,
   });
 
-  console.log('Creation?', creation);
+  // console.log('Creation?', creation);
 };
 
 doBackfill();

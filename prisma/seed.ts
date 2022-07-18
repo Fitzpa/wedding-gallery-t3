@@ -856,7 +856,7 @@ const jsonData = [{
 const load = async () => {
 
    const res = await prisma.image.createMany({data: jsonData});
-   console.log("🚀 ~ file: seed.ts ~ line 859 ~ load ~ res", res)
+  //  console.log("🚀 ~ file: seed.ts ~ line 859 ~ load ~ res", res)
 
 };
 

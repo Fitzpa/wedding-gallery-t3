@@ -12,9 +12,9 @@ const Home: NextPage = () => {
     return <div>Loading...</div>;
   }
 
-  if (data) {
-    console.log(data);
-  }
+  // if (data) {
+  //   console.log(data);
+  // }
 
   return (
     <Container size={"xl"} >

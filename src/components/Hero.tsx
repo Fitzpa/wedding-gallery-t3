@@ -8,9 +8,9 @@ function Hero() {
     return <div>Loading...</div>;
   }
 
-  if (data) {
-    console.log(data);
-  }
+  // if (data) {
+  //   console.log(data);
+  // }
 
   return (
     <Box mx="auto" mb={"120px"}>

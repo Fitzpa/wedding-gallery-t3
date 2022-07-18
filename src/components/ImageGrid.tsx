@@ -10,9 +10,9 @@ function ImageGrid() {
     return <div>Loading...</div>;
   }
 
-  if (data) {
-    console.log(data);
-  }
+  // if (data) {
+  //   console.log(data);
+  // }
 
   return (
     <Container fluid className="container">

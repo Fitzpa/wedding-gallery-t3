@@ -34,7 +34,6 @@ export const imageRouter = createRouter()
             };
           } else {
             portraitCount = portraitCount + 1;
-            console.log(portraits.length)
             if(portraitCount >= portraits.length) {
               hasPortraitsLeft = false;
             }
