@@ -11,7 +11,7 @@ function ImageModal({imageScr }: { imageScr: string }) {
       </Modal>
 
       <button onClick={() => setOpened(true)} style={{ border: "none", padding: 0, cursor: "pointer" }}>
-        <Image src={imageScr} alt="Hawaiian wedding photo"/>
+        <Image src={imageScr} alt="Hawaiian wedding photo" withPlaceholder />
       </button>
     </>
   )
