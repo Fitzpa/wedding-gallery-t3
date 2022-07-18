@@ -14,3 +14,10 @@ export const getSingleImageSchema = z.object({
 export const updateSingleImageSchema = z.object({
   id: z.string().uuid(),
 });
+
+export const seedImagesSchema = z.object({
+  id: z.string().uuid(),
+  src: z.string(),
+  likes: z.number(),
+  orientation: z.string()
+}).array()

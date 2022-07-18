@@ -3,13 +3,14 @@ import {
   createImageSchema,
   getSingleImageSchema,
   updateSingleImageSchema,
+  seedImagesSchema,
 } from '../../schema/image.schema';
 
 export const imageRouter = createRouter()
   .query('get-images', {
     async resolve({ ctx }) {
       const images = await ctx.prisma.image.findMany();
-      
+
       return images;
     },
   })
@@ -64,5 +65,11 @@ export const imageRouter = createRouter()
           id: input.id,
         },
       });
+    },
+  })
+  .query('seed-images', {
+    input: seedImagesSchema,
+    resolve({ ctx, input }) {
+      return ctx.prisma.image.createMany({ data: input });
     },
   });
