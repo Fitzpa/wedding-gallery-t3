@@ -19,7 +19,42 @@ export const imageRouter = createRouter()
       const images = await ctx.prisma.image.findMany();
       const landscapes = await ctx.prisma.image.findMany({ where: { orientation: 'landscape' } });
       const portraits = await ctx.prisma.image.findMany({ where: { orientation: 'portrait' } });
-      return { images, landscapes, portraits };
+
+      let landscapeCount = 0
+      let portraitCount = 0 
+      let hasPortraitsLeft = true
+
+      const orderedImages = images.map((image, index) => {
+        if(hasPortraitsLeft) {
+          if (index % 4 === 0) {
+            landscapeCount = landscapeCount + 1
+            return {
+              ...landscapes[landscapeCount - 1],
+              src: `/images/${landscapes[landscapeCount - 1]?.src}`,
+            };
+          } else {
+            portraitCount = portraitCount + 1;
+            console.log(portraits.length)
+            if(portraitCount >= portraits.length) {
+              hasPortraitsLeft = false;
+            }
+            if (portraits[portraitCount - 1]) {
+              return {
+                ...portraits[portraitCount - 1],
+                src: `/images/${portraits[portraitCount - 1]?.src}`,
+              };
+            }
+          }
+        } else {
+          landscapeCount = landscapeCount + 1
+          return {
+            ...landscapes[landscapeCount - 1],
+            src: `/images/${landscapes[landscapeCount - 1]?.src}`,
+          };
+        }
+      });
+
+      return { orderedImages };
     },
   })
   .mutation('create-image', {
