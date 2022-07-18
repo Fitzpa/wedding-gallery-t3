@@ -33,10 +33,6 @@ function Hero() {
               </MediaQuery>
             </MediaQuery>
           </Box>
-          {/* <SimpleGrid cols={2}>
-            <Image src="/images/TCP_8953.jpg" />
-            <Image src="/images/TCP_9117.jpg" />
-          </SimpleGrid> */}
         </Stack>
       </Box>
     </Box>
