@@ -9,7 +9,7 @@
     "postinstall": "prisma generate",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\" scripts/update-db.ts",
-    "vercel-build": "prisma generate && next build && ts-node --compiler-options scripts/update-db.ts"
+    "vercel-build": "prisma generate && ts-node --compiler-options scripts/update-db.ts && next build"
   },
   "dependencies": {
     "@mantine/core": "^4.2.12",
