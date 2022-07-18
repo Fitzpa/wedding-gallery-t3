@@ -1,9 +1,5 @@
-// import prisma from '../src/server/db/client';
+import { prisma } from '../src/server/db/client';
 // import jsonData from '../public/data/result.json';
-// @ts-ignore
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient();
-
 
 const jsonData = [{
   "id": "cl5onycif0001g7w1tnac34pc",
