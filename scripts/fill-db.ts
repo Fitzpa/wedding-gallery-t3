@@ -1,4 +1,5 @@
-import prisma from '../src/server/db/client';
+// import prisma from '../src/server/db/client';
+import prisma from '../prisma/seed';
 import jsonData from '../public/data/images.json';
 const doBackfill = async () => {
   // console.log(jsonData)

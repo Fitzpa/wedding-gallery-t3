@@ -1,4 +1,5 @@
-import prisma from '../src/server/db/client';
+import prisma from '../prisma/seed';
+// import prisma from '../src/server/db/client';
 // import jsonData from '../public/data/result.json';
 
 const jsonData = [{
