@@ -4,20 +4,28 @@ import { trpc } from '../utils/trpc';
 import ImageGrid from '../components/ImageGrid';
 import Hero from '../components/Hero';
 import { Container, Image, Box } from '@mantine/core';
+import { useAtom } from 'jotai';
+import { z } from 'zod'
+import { seedImagesSchema } from '@src/schema/image.schema';
 
 const Home: NextPage = () => {
-  const { data, isLoading } = trpc.useQuery(['image.get-images']);
+  const { data, isLoading, isSuccess } = trpc.useQuery(['image.get-images-by-orientation']);
 
   if (isLoading) {
-    return (
-      <Container size={"xl"} style={{ minHeight: '100vh' }} >
-        <div>Loading...</div>
-      </Container>
-    );
+    return <div>Loading...</div>;
   }
 
-  // if (data) {
-  //   console.log(data);
+  // if(isSuccess) {
+  //   const result = seedImagesSchema.safeParse(data.orderedImages);
+  //   if (!result.success) {
+  //     // handle error then return
+  //     console.error("orderedImages data is invalid.", result.error);
+  //     result.error;
+  //   } else {
+
+  //     // do something
+  //     result.data;
+  //   }
   // }
 
   return (
