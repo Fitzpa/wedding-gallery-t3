@@ -1,5 +1,6 @@
-import { Image, SimpleGrid, Stack,  MediaQuery, Title, Box } from '@mantine/core';
+import { Image, SimpleGrid, Stack,  MediaQuery, Title, Box, Button } from '@mantine/core';
 import { trpc } from '../utils/trpc';
+import ScrollToButton from './ScrollToButton';
 
 function Hero() {
   const { data, isLoading } = trpc.useQuery(['image.get-images']);
@@ -15,10 +16,11 @@ function Hero() {
   return (
     <Box mx="auto" mb={"120px"}>
       <Box
-        style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', maxHeight: '100vh', paddingTop: "40px" }}
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'start', maxHeight: '100vh' }}
       >
-        <Stack>
-          <SimpleGrid cols={3}>
+        <Stack justify={"space-between"} align="center" style={{minHeight: '100vh'}}>
+        <Stack justify={"flex-start"} align="center">
+          <SimpleGrid cols={3} pt={"2rem"}>
             <Image src="/images/TCP_9147.jpg" />
             <Image src="/images/TCP_9013.jpg" />
             <Image src="/images/TCP_9334.jpg" />
@@ -32,6 +34,10 @@ function Hero() {
                 </Title>
               </MediaQuery>
             </MediaQuery>
+          </Box>
+        </Stack>
+          <Box mb={"4rem"}>
+            <ScrollToButton toId="gallery-section" duration={1500}>View gallery</ScrollToButton>
           </Box>
         </Stack>
       </Box>

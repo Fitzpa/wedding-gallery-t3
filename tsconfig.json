@@ -26,6 +26,6 @@
       "@utils/*": ["src/utils/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/fill-db.ts", "prisma/seed.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/fill-db.ts", "prisma/seed.js", "src/components/ImageGallery.jsx"],
   "exclude": ["node_modules"]
 }

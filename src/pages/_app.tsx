@@ -15,6 +15,12 @@ import Head from 'next/head';
 import { GlobalStyles } from '../components/Global';
 import '@styles/swiper-bundle.css';
 import { Provider as JotaiProvider } from 'jotai';
+import { useTasksDevtools } from "@src/store/atoms"
+
+const AtomsDevtools = ({ children }: { children: any}) => {
+  useTasksDevtools()
+  return children
+}
 
 const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
   const { Component, pageProps } = props;
@@ -37,30 +43,16 @@ const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
       </Head>
       <JotaiProvider>
-      <MantineProvider theme={{ fontFamily: 'Maginia', headings: {fontFamily: "Maginia", fontSize: ["4.75rem","4.75rem","4.75rem","4.75rem","4.75rem","4.75rem"]}, colorScheme }} withGlobalStyles withNormalizeCSS>
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </MantineProvider>
+        <AtomsDevtools>
+          <MantineProvider theme={{ fontFamily: 'Montserrat', headings: {fontFamily: "Maginia", fontSize: ["4.75rem","4.75rem","4.75rem","4.75rem","4.75rem","4.75rem"]}, colorScheme }} withGlobalStyles withNormalizeCSS>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </MantineProvider>
+        </AtomsDevtools>
       </JotaiProvider>
     </>
   );
 };
-
-// function useAtomsDebugValue(options?: {
-//   scope?: Scope
-//   enabled?: boolean
-// }): void
-
-// const textAtom = atom('hello')
-// textAtom.debugLabel = 'textAtom'
-
-// const lenAtom = atom((get) => get(textAtom).length)
-// lenAtom.debugLabel = 'lenAtom'
-
-// const DebugAtoms = () => {
-//   useAtomsDebugValue()
-//   return null
-// }
 
 export default withTRPC<AppRouter>({
   config({ ctx }) {

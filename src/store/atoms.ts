@@ -1,8 +1,8 @@
 import { atom } from 'jotai'
+import { useAtomDevtools } from 'jotai/devtools'
 import type { seedImagesSchema } from '@src/schema/image.schema';
-export const isModalOpenAtom = atom<boolean>(false)
 
-// export const isModalOpen = atom<boolean>(false)
+export const isModalOpenAtom = atom<boolean>(false)
 
 export const toggleIsModalOpenAtom = atom<boolean, boolean>(
   get => get(isModalOpenAtom),
@@ -16,16 +16,7 @@ export const setImagesLengthAtom = atom<number, number>(
   (_get, set, imagesArrayLength) => set(imagesLength, () => imagesArrayLength)
 )
 
-// type orderedImages: seedImagesSchema
-// const defaultImages: typeof seedImagesSchema = [{id: "", src: "", likes: 0, orientation: ""}]
-// export const orderedImagesAtom = atom<seedImagesSchema>(defaultImages)
-
-// export const setOrderedImagesAtom = atom<seedImagesSchema, seedImagesSchema>(
-//   get => get(orderedImagesAtom),
-//   (_get, set, imagesArray) => set(orderedImagesAtom, () => imagesArray)
-// )
-
-interface IImageAtom {
+export interface IImageAtom {
   image: {
     src: string
     id?: string | undefined
@@ -64,3 +55,42 @@ export const decrementIndexAtom = atom<number, number>(
   get => get(currentIndexAtom),
   (_get, set) => set(currentIndexAtom, (currentIndexAtom) => currentIndexAtom - 1)
 )
+
+//? Jotai Devtools -----------------
+
+isModalOpenAtom.debugLabel = 'isModalOpenAtom'
+toggleIsModalOpenAtom.debugLabel = 'toggleIsModalOpenAtom'
+imagesLength.debugLabel = 'imagesLength'
+setImagesLengthAtom.debugLabel = 'setImagesLengthAtom'
+currentImageAtom.debugLabel = 'currentImageAtom'
+setCurrentImageAtom.debugLabel = 'setCurrentImageAtom'
+currentIndexAtom.debugLabel = 'currentIndexAtom'
+setCurrentIndexAtom.debugLabel = 'setCurrentIndexAtom'
+decrementIndexAtom.debugLabel = 'decrementIndexAtom'
+incrementIndexAtom.debugLabel = 'incrementIndexAtom'
+
+// The interface for the type stored in the atom.
+export interface Task {
+  label: string
+  complete: boolean
+}
+
+// The atom to debug.
+export const tasksAtom = atom<Task[]>([])
+
+// If the useAtomDevtools name parameter is undefined, this value will be used instead.
+tasksAtom.debugLabel = 'Tasks'
+
+export const useTasksDevtools = () => {
+  // The hook can be called simply by passing an atom for debugging.
+  useAtomDevtools(isModalOpenAtom)
+  useAtomDevtools(toggleIsModalOpenAtom)
+  useAtomDevtools(imagesLength)
+  useAtomDevtools(setImagesLengthAtom)
+  useAtomDevtools(currentImageAtom)
+  useAtomDevtools(setCurrentImageAtom)
+  useAtomDevtools(currentIndexAtom)
+  useAtomDevtools(setCurrentIndexAtom)
+  useAtomDevtools(decrementIndexAtom)
+  useAtomDevtools(incrementIndexAtom)
+}
