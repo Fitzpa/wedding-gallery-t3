@@ -47,9 +47,15 @@ a {
   .mobile-simple-grid {
     display: none;
   }
+  .hero-stack {
+    justify-content: flex-start;
+  }
 }
 @media screen and (max-width: 768px) {
   .desktop-simple-grid {
     display: none;
+  }
+  .hero-stack {
+    justify-content: center;
   }
 }

@@ -13,7 +13,7 @@ function Hero() {
           maxHeight: '100vh',
         }}
       >
-        <Stack justify={'center'} align="center" style={{ minHeight: '100vh' }}>
+        <Stack className="hero-stack" align="center" style={{ minHeight: '100vh' }}>
           <Stack justify={'flex-start'} align="center">
             <SimpleGrid cols={2} className="desktop-simple-grid">
               <Image src={'/images/TCP_9475.jpg'} pt={'1rem'} />
