@@ -43,6 +43,10 @@ a {
   pointer-events: none;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 769px) {
   .mobile-simple-grid {
     display: none;

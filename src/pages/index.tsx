@@ -6,6 +6,7 @@ import { Container, Image, Box, Stack } from '@mantine/core';
 import ImageGallery from '@components/ImageGallery';
 import ScrollToButton from '@components/ScrollToButton';
 import { useState, useEffect } from 'react';
+import cx from 'classnames';
 
 const Home: NextPage = () => {
   // const { data, isLoading, isSuccess } = trpc.useQuery(['image.get-images-by-orientation']);
@@ -36,7 +37,7 @@ const Home: NextPage = () => {
   }, [viewerIsOpen]);
 
   return (
-    <Container size={'xl'} style={{ minHeight: '100vh' }} mb={'4rem'} id="top">
+    <Container size={'xl'} style={{ minHeight: '100vh' }} mb={'4rem'} id="top" className={cx(viewerIsOpen && "overflow-hidden")}>
       <Image
         style={{
           opacity: '0.5',
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
         src={'/waves-bg.svg'}
       />
 
-      <Box mb={'2rem'} style={{ position: 'relative', zIndex: '2' }}>
+      <Box mb={'2rem'} style={{ position: 'relative', zIndex: '2' }} className={cx(viewerIsOpen && "overflow-hidden")}>
         <Hero />
         <ImageGallery viewerIsOpen={viewerIsOpen} setViewerIsOpen={setViewerIsOpen} />
       </Box>

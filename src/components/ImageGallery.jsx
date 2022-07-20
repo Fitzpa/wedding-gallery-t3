@@ -4,6 +4,7 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { trpc } from "@src/utils/trpc";
 import photos from '@src/../public/data/result-gallery.json';
+import cx from 'classnames'
 
 function ImageGallery({viewerIsOpen, setViewerIsOpen}) {
   // const { data, isLoading } = trpc.useQuery(['image.get-images-by-orientation']);
@@ -32,7 +33,7 @@ function ImageGallery({viewerIsOpen, setViewerIsOpen}) {
 
   return (
     <Box id="gallery-section">
-      <Gallery photos={photos} onClick={openLightbox} />
+      <Gallery photos={photos} onClick={openLightbox} className={cx("gallery", viewerIsOpen && "overflow-hidden")}/>
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
