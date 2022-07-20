@@ -12,6 +12,7 @@ function Hero() {
           alignItems: 'start',
           maxHeight: '100vh',
         }}
+        className="hero-container"
       >
         <Stack className="hero-stack" align="center" style={{ minHeight: '100vh' }}>
           <Stack justify={'flex-start'} align="center">

@@ -47,7 +47,7 @@ a {
   .mobile-simple-grid {
     display: none;
   }
-  .hero-stack {
+  .hero-stack, .hero-container {
     justify-content: flex-start;
   }
 }
@@ -55,7 +55,7 @@ a {
   .desktop-simple-grid {
     display: none;
   }
-  .hero-stack {
+  .hero-stack, .hero-container {
     justify-content: center;
   }
 }
