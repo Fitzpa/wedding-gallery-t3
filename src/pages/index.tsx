@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import { Container, Image, Box, Stack } from '@mantine/core';
 import ImageGallery from '@components/ImageGallery';
 import ScrollToButton from '@components/ScrollToButton';
+import { useState, useEffect } from 'react';
 
 const Home: NextPage = () => {
   // const { data, isLoading, isSuccess } = trpc.useQuery(['image.get-images-by-orientation']);
@@ -19,8 +20,23 @@ const Home: NextPage = () => {
   //   );
   // }
 
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const body = document.querySelector('body');
+
+      if (viewerIsOpen && body) {
+        body.style.overflow = 'hidden';
+      } else if (!viewerIsOpen && body) {
+        // Enable scroll
+        body.style.overflow = 'auto';
+      }
+    }
+  }, [viewerIsOpen]);
+
   return (
-    <Container size={'xl'} style={{ minHeight: '100vh' }} mb={"4rem"} id="top">
+    <Container size={'xl'} style={{ minHeight: '100vh' }} mb={'4rem'} id="top">
       <Image
         style={{
           opacity: '0.5',
@@ -35,12 +51,14 @@ const Home: NextPage = () => {
         src={'/waves-bg.svg'}
       />
 
-      <Box mb={"2rem"} style={{ position: 'relative', zIndex: '2' }}>
+      <Box mb={'2rem'} style={{ position: 'relative', zIndex: '2' }}>
         <Hero />
-        <ImageGallery />
+        <ImageGallery viewerIsOpen={viewerIsOpen} setViewerIsOpen={setViewerIsOpen} />
       </Box>
-      <Box mb={"2rem"} style={{ position: 'relative', zIndex: '2' }}>
-        <ScrollToButton toId='top' duration={3000}>Back to top?</ScrollToButton>
+      <Box mb={'2rem'} style={{ position: 'relative', zIndex: '2' }}>
+        <ScrollToButton toId="top" duration={3000}>
+          Back to top?
+        </ScrollToButton>
       </Box>
     </Container>
   );

@@ -5,10 +5,9 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import { trpc } from "@src/utils/trpc";
 import photos from '@src/../public/data/result-gallery.json';
 
-function ImageGallery() {
+function ImageGallery({viewerIsOpen, setViewerIsOpen}) {
   // const { data, isLoading } = trpc.useQuery(['image.get-images-by-orientation']);
   const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
