@@ -14,8 +14,18 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@schema/*": ["src/schema/*"],
+      "@server/*": ["src/server/*"],
+      "@styles/*": ["src/styles/*"],
+      "@src/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/fill-db.ts", "prisma/seed.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/fill-db.ts", "prisma/seed.js", "src/components/ImageGallery.jsx"],
   "exclude": ["node_modules"]
 }
