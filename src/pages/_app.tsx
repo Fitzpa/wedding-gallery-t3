@@ -13,14 +13,13 @@ import { url } from '../constants';
 import { useState } from 'react';
 import Head from 'next/head';
 import { GlobalStyles } from '../components/Global';
-import '@styles/swiper-bundle.css';
 import { Provider as JotaiProvider } from 'jotai';
-import { useTasksDevtools } from "@src/store/atoms"
+import { useTasksDevtools } from '@src/store/atoms';
 
-const AtomsDevtools = ({ children }: { children: any}) => {
-  useTasksDevtools()
-  return children
-}
+const AtomsDevtools = ({ children }: { children: any }) => {
+  useTasksDevtools();
+  return children;
+};
 
 const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
   const { Component, pageProps } = props;
@@ -35,16 +34,36 @@ const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
     <>
       <Head>
         <title>Pendlefitz Wedding Gallery</title>
-        <meta name="description" content="Katie Pendleton and Louie Fitzpatrick's wedding image gallery." />
+        <meta
+          name="description"
+          content="Katie Pendleton and Louie Fitzpatrick's wedding image gallery."
+        />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </Head>
       <JotaiProvider>
         <AtomsDevtools>
-          <MantineProvider theme={{ fontFamily: 'Montserrat', headings: {fontFamily: "Maginia", fontSize: ["4.75rem","4.75rem","4.75rem","4.75rem","4.75rem","4.75rem"]}, colorScheme }} withGlobalStyles withNormalizeCSS>
+          <MantineProvider
+            theme={{
+              fontFamily: 'Montserrat',
+              headings: {
+                fontFamily: 'Maginia',
+                fontSize: ['4.75rem', '4.75rem', '4.75rem', '4.75rem', '4.75rem', '4.75rem'],
+              },
+              colorScheme,
+              breakpoints: {
+                sm: 768,
+                md: 1024,
+                lg: 1200,
+                xl: 1320,
+              },
+            }}
+            withGlobalStyles
+            withNormalizeCSS
+          >
             <GlobalStyles />
             <Component {...pageProps} />
           </MantineProvider>

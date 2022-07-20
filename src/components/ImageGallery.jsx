@@ -6,7 +6,7 @@ import { trpc } from "@src/utils/trpc";
 import photos from '@src/../public/data/result-gallery.json';
 
 function ImageGallery() {
-  const { data, isLoading } = trpc.useQuery(['image.get-images-by-orientation']);
+  // const { data, isLoading } = trpc.useQuery(['image.get-images-by-orientation']);
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 

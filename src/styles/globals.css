@@ -42,3 +42,14 @@ a {
   overflow: hidden;
   pointer-events: none;
 }
+
+@media screen and (min-width: 769px) {
+  .mobile-simple-grid {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .desktop-simple-grid {
+    display: none;
+  }
+}
