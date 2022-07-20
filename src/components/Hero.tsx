@@ -69,7 +69,9 @@ function Hero() {
                       style={{ marginBottom: '-30px' }}
                     />
                   </MediaQuery>
-                  <Image src="/carbon_arrow-shift-down.svg" width="200px" height={'auto'} />
+                  <MediaQuery query="(max-width: 768px)" styles={{ display: 'none' }}>
+                    <Image src="/carbon_arrow-shift-down.svg" width="200px" height={'auto'} />
+                  </MediaQuery>
                   <ScrollToButton toId="gallery-section" duration={1000}>
                     View gallery
                   </ScrollToButton>
