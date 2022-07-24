@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Box } from "@mantine/core";
 import Gallery from "react-photo-gallery";
+// import Gallery from "react-photo-gallery-test";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { trpc } from "@src/utils/trpc";
 import photos from '@src/../public/data/result-gallery.json';
@@ -33,7 +34,7 @@ function ImageGallery({viewerIsOpen, setViewerIsOpen}) {
 
   return (
     <Box id="gallery-section">
-      <Gallery photos={photos} onClick={openLightbox} className={cx("gallery", viewerIsOpen && "overflow-hidden")}/>
+      <Gallery photos={photos} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>

@@ -58,7 +58,7 @@ const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
                 sm: 768,
                 md: 1024,
                 lg: 1200,
-                xl: 1320,
+                xl: 1400
               },
             }}
             withGlobalStyles
