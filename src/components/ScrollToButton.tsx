@@ -13,7 +13,7 @@ const ScrollToButton = ({ toId, toRef, duration, children }: { toId?: string, to
       color: "#054061",
       height: "auto",
       fontSize: '1.875rem',
-      fontWeight: "100",
+      fontWeight: 100,
       textTransform: 'uppercase',
       padding: '2rem 1rem',
       transition: "all ease-in-out 0.2s",
